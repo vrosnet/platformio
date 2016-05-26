@@ -17,7 +17,9 @@ from __future__ import absolute_import
 from os.path import isfile, join
 from shutil import copyfile
 from time import sleep
+from urlparse import urlparse
 
+import paramiko
 from serial import Serial
 
 from platformio.util import get_logicaldisks, get_serialports, get_systype
@@ -113,6 +115,58 @@ def UploadToDisk(_, target, source, env):  # pylint: disable=W0613,W0621
           "Please restart your board.")
 
 
+def UploadToSSH(_, target, source, env):  # pylint: disable=W0613,W0621
+
+    ssh_client = paramiko.SSHClient()
+    ssh_client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+
+    params = urlparse("ssh://%s" % env.subst("$UPLOAD_PORT"))
+
+    if not all([params.hostname, params.username, params.password]):
+        env.Exit(
+            "Error: Please check your SSH connection options "
+            "in platformio.ini file")
+
+    ssh_port = 22
+    if params.port:
+        ssh_port = params.port
+
+    print("Connecting to %s:%d..." % (params.hostname, ssh_port))
+
+    try:
+        ssh_client.connect(
+            params.hostname,
+            port=ssh_port,
+            username=params.username,
+            password=params.password,
+            timeout=5
+        )
+
+    except paramiko.AuthenticationException:
+        env.Exit("Error: Authentication failed when connecting to %s" %
+                 params.hostname)
+    except Exception, e:
+        env.Exit("Error: Failed to connect to %s:%d: %s" %
+                 (params.hostname, ssh_port, e))
+
+    prog_name = env.subst("platformio$PROGSUFFIX")
+    print("Uploading %s..." % prog_name)
+    ssh_client.exec_command("pkill %s" % prog_name,  timeout=5)
+    sleep(0.5)
+    sftp_client = ssh_client.open_sftp()
+    sftp_client.put(env.subst(source)[0], "/tmp/%s" % prog_name)
+    sleep(0.5)
+    sftp_client.chmod("/tmp/%s" % prog_name, 777)
+    sleep(0.5)
+    sftp_client.close()
+    print("Start executing...")
+    command = "nohup %s > /dev/null 2>&1 &" % "/tmp/%s" % prog_name
+    ssh_client.exec_command(command,  timeout=5)
+    sleep(0.5)
+    ssh_client.close()
+    print("Uploading completed!")
+
+
 def exists(_):
     return True
 
@@ -123,4 +177,5 @@ def generate(env):
     env.AddMethod(WaitForNewSerialPort)
     env.AddMethod(AutodetectUploadPort)
     env.AddMethod(UploadToDisk)
+    env.AddMethod(UploadToSSH)
     return env
