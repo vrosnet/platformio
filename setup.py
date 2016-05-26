@@ -25,7 +25,8 @@ install_requires = [
     "lockfile>=0.9.1,<0.13",
     "requests>=2.4.0,<3",
     "colorama",
-    "pyserial<4"
+    "pyserial<4",
+    "paramiko"
 ]
 
 if sys.version_info < (2, 7, 0):
