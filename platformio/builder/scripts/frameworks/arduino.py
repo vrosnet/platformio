@@ -149,6 +149,11 @@ elif "intel" in env.get("PLATFORM"):
             )
         ]
     )
+elif env.get("PLATFORM") == "samsung_artik":
+    PLATFORMFW_DIR = join(
+        "$PIOPACKAGES_DIR",
+        "framework-arduinolinuxarm"
+    )
 
 env.Replace(PLATFORMFW_DIR=PLATFORMFW_DIR)
 

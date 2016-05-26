@@ -1,0 +1,97 @@
+{
+   "artik10": {
+        "build": {
+            "core": "linux",
+            "extra_flags": "-DARDUINO_ARTIK10 -DARDUINO_ARCH_ARM_CORTEXA -DMQTT_KEEPALIVE=80 -DN_I2C=1 -DN_SPI=0",
+            "f_cpu": "1300000000L",
+            "mcu": "cortex-a15",
+            "usb_product": "Samsung Artik 10",
+            "variant": "artik",
+            "hwid": [
+              ["0x04E8", "0xA710"]
+            ]
+        },
+        "frameworks": ["arduino"],
+        "name": "Samsung Artik 10",
+        "platform": "samsung_artik",
+        "upload": {
+            "maximum_ram_size": 2147483648,
+            "maximum_size": 10000000,
+            "protocol":"ssh"
+        },
+        "url": "https://www.artik.io/modules/overview/artik-10/",
+        "vendor": "Samsung"
+    },
+
+    "artik10_v05": {
+        "build": {
+            "core": "linux",
+            "extra_flags": "-DARDUINO_ARTIK10 -DARDUINO_ARCH_ARM_CORTEXA -DARTIK_PWM_ERRATA -DMQTT_KEEPALIVE=80 -DN_I2C=1 -DN_SPI=0",
+            "f_cpu": "1300000000L",
+            "mcu": "cortex-a15",
+            "usb_product": "Samsung Artik 10",
+            "variant": "artik",
+            "hwid": [
+              ["0x04E8", "0xA710"]
+            ]
+        },
+        "frameworks": ["arduino"],
+        "name": "Samsung Artik 10 v0.5",
+        "platform": "samsung_artik",
+        "upload": {
+            "maximum_ram_size": 2147483648,
+            "maximum_size": 10000000,
+            "protocol":"ssh"
+        },
+        "url": "https://www.artik.io/modules/overview/artik-10/",
+        "vendor": "Samsung"
+    },
+
+    "artik5": {
+        "build": {
+            "core": "linux",
+            "extra_flags": "-DARDUINO_ARTIK5 -DARDUINO_ARCH_ARM_CORTEXA -DMQTT_KEEPALIVE=80 -DN_I2C=1 -DN_SPI=0",
+            "f_cpu": "1300000000L",
+            "mcu": "cortex-a7",
+            "usb_product": "Samsung Artik 5",
+            "variant": "artik5",
+            "hwid": [
+              ["0x04E8", "0xA705"]
+            ]
+        },
+        "frameworks": ["arduino"],
+        "name": "Samsung Artik 5",
+        "platform": "samsung_artik",
+        "upload": {
+            "maximum_ram_size": 536870912,
+            "maximum_size": 10000000,
+            "protocol":"ssh"
+        },
+        "url": "https://www.artik.io/modules/overview/artik-5/",
+        "vendor": "Samsung"
+    },
+
+    "artik5_v05": {
+        "build": {
+            "core": "linux",
+            "extra_flags": "-DARDUINO_ARTIK5 -DARDUINO_ARCH_ARM_CORTEXA -DARTIK_PWM_ERRATA -DMQTT_KEEPALIVE=80 -DN_I2C=1 -DN_SPI=0",
+            "f_cpu": "1000000000L",
+            "mcu": "cortex-a7",
+            "usb_product": "Samsung Artik 5",
+            "variant": "artik5",
+            "hwid": [
+              ["0x04E8", "0xA705"]
+            ]
+        },
+        "frameworks": ["arduino"],
+        "name": "Samsung Artik 5 v0.5",
+        "platform": "samsung_artik",
+        "upload": {
+            "maximum_ram_size": 536870912,
+            "maximum_size": 10000000,
+            "protocol":"ssh"
+        },
+        "url": "https://www.artik.io/modules/overview/artik-5/",
+        "vendor": "Samsung"
+    }
+}
