@@ -91,6 +91,10 @@ PLATFORM_PACKAGES = {
     "framework-simba": [
         ("Simba Framework", "https://github.com/eerimoq/simba")
     ],
+    "framework-arduinolinuxarm": [
+        ("Arduino Wiring-based Framework (Linux Core)",
+         "https://github.com/arduino/libArduino")
+    ],
     "sdk-esp8266": [
         ("ESP8266 SDK", "http://bbs.espressif.com")
     ],
@@ -139,6 +143,9 @@ PLATFORM_PACKAGES = {
         ("GCC for Intel ARC",
          "https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain")
     ],
+    "toolchain-gccarma8gnueabihf": [
+        ("GCC for Linux ARM A8 GNU EABI", "https://gcc.gnu.org")
+    ],
     "tool-scons": [
         ("SCons software construction tool", "http://www.scons.org")
     ],
@@ -181,6 +188,9 @@ PLATFORM_PACKAGES = {
     ],
     "tool-arduino101load": [
         ("Genuino101 uploader", "https://github.com/01org/intel-arduino-tools")
+    ],
+    "tool-linuxuploader": [
+        ("Samsung Artik uploader", "https://developer.artik.io/documentation")
     ]
 }
 
