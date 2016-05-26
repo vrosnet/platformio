@@ -24,7 +24,7 @@ install_requires = [
     "click>=3.2,<6",
     "lockfile>=0.9.1,<0.13",
     "requests>=2.4.0,<3",
-    "paramiko"
+    "paramiko",
     "colorama",
     "pyserial<4"
 ]
