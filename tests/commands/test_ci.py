@@ -16,6 +16,7 @@ from os.path import join
 
 from platformio import exception
 from platformio.commands.ci import cli as cmd_ci
+from platformio.commands.lib import cli as cmd_lib
 
 
 def test_ci_empty(clirunner):
@@ -25,12 +26,18 @@ def test_ci_empty(clirunner):
 
 
 def test_ci_boards(clirunner, validate_cliresult):
-	pass
-    # result = clirunner.invoke(cmd_ci, [
-    #     join("examples", "atmelavr-and-arduino", "arduino-internal-libs",
-    #          "src", "ChatServer.ino"), "-b", "uno", "-b", "leonardo"
-    # ])
-    # validate_cliresult(result)
+    result = clirunner.invoke(cmd_ci, [
+        join("examples", "atmelavr-and-arduino", "arduino-internal-libs",
+             "src", "ChatServer.ino"), "-b", "uno", "-b", "leonardo"
+    ])
+    validate_cliresult(result)
+
+    result = clirunner.invoke(
+        cmd_lib, ["-g", "install", "https://github.com/gioblu/PJON.git#3.0",
+                  "https://developer.mbed.org/users/simon/code/TextLCD/",
+                  "http://dl.platformio.org/libraries/archives/3/3756.tar.gz",
+                  "knolleary/pubsubclient"])
+    validate_cliresult(result)
 
 
 # def test_ci_project_conf(clirunner, validate_cliresult):
