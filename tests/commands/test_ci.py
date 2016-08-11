@@ -24,12 +24,12 @@ def test_ci_empty(clirunner):
     assert isinstance(result.exception, exception.CIBuildEnvsEmpty)
 
 
-# def test_ci_boards(clirunner, validate_cliresult):
-#     result = clirunner.invoke(cmd_ci, [
-#         join("examples", "atmelavr-and-arduino", "arduino-internal-libs",
-#              "src", "ChatServer.ino"), "-b", "uno", "-b", "leonardo"
-#     ])
-#     validate_cliresult(result)
+def test_ci_boards(clirunner, validate_cliresult):
+    result = clirunner.invoke(cmd_ci, [
+        join("examples", "atmelavr-and-arduino", "arduino-internal-libs",
+             "src", "ChatServer.ino"), "-b", "uno", "-b", "leonardo"
+    ])
+    validate_cliresult(result)
 
 
 # def test_ci_project_conf(clirunner, validate_cliresult):
