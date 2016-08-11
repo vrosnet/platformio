@@ -33,12 +33,10 @@ def test_ci_boards(clirunner, validate_cliresult):
     validate_cliresult(result)
 
     result = clirunner.invoke(
-        cmd_lib, ["-g", "install", "https://github.com/gioblu/PJON.git#3.0",
-                  "https://developer.mbed.org/users/simon/code/TextLCD/",
-                  "http://dl.platformio.org/libraries/archives/3/3756.tar.gz",
-                  "knolleary/pubsubclient"])
+        cmd_lib, ["-g", "install",
+                  "https://developer.mbed.org/users/simon/code/TextLCD/"])
+    print result.output
     validate_cliresult(result)
-
 
 # def test_ci_project_conf(clirunner, validate_cliresult):
 #     project_dir = join("examples", "atmelavr-and-arduino",
@@ -49,7 +47,6 @@ def test_ci_boards(clirunner, validate_cliresult):
 #     ])
 #     validate_cliresult(result)
 #     assert all([s in result.output for s in ("ethernet", "leonardo", "yun")])
-
 
 # def test_ci_lib_and_board(clirunner, validate_cliresult):
 #     example_dir = join("examples", "atmelavr-and-arduino",
