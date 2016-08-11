@@ -32,23 +32,23 @@ def test_ci_boards(clirunner, validate_cliresult):
     validate_cliresult(result)
 
 
-# def test_ci_project_conf(clirunner, validate_cliresult):
-#     project_dir = join("examples", "atmelavr-and-arduino",
-#                        "arduino-internal-libs")
-#     result = clirunner.invoke(cmd_ci, [
-#         join(project_dir, "src", "ChatServer.ino"), "--project-conf",
-#         join(project_dir, "platformio.ini")
-#     ])
-#     validate_cliresult(result)
-#     assert all([s in result.output for s in ("ethernet", "leonardo", "yun")])
+def test_ci_project_conf(clirunner, validate_cliresult):
+    project_dir = join("examples", "atmelavr-and-arduino",
+                       "arduino-internal-libs")
+    result = clirunner.invoke(cmd_ci, [
+        join(project_dir, "src", "ChatServer.ino"), "--project-conf",
+        join(project_dir, "platformio.ini")
+    ])
+    validate_cliresult(result)
+    assert all([s in result.output for s in ("ethernet", "leonardo", "yun")])
 
 
-# def test_ci_lib_and_board(clirunner, validate_cliresult):
-#     example_dir = join("examples", "atmelavr-and-arduino",
-#                        "arduino-external-libs")
-#     result = clirunner.invoke(cmd_ci, [
-#         join(example_dir, "lib", "OneWire", "examples", "DS2408_Switch",
-#              "DS2408_Switch.pde"), "-l", join(example_dir, "lib", "OneWire"),
-#         "-b", "uno"
-#     ])
-#     validate_cliresult(result)
+def test_ci_lib_and_board(clirunner, validate_cliresult):
+    example_dir = join("examples", "atmelavr-and-arduino",
+                       "arduino-external-libs")
+    result = clirunner.invoke(cmd_ci, [
+        join(example_dir, "lib", "OneWire", "examples", "DS2408_Switch",
+             "DS2408_Switch.pde"), "-l", join(example_dir, "lib", "OneWire"),
+        "-b", "uno"
+    ])
+    validate_cliresult(result)
