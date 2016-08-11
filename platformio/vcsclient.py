@@ -80,12 +80,14 @@ class VCSClientBase(object):
         args = [self.command] + args
         if "cwd" not in kwargs:
             kwargs['cwd'] = self.src_dir
+        print "run_cmd",  args, kwargs
         return check_call(args, **kwargs) == 0
 
     def get_cmd_output(self, args, **kwargs):
         args = [self.command] + args
         if "cwd" not in kwargs:
             kwargs['cwd'] = self.src_dir
+        print "get_cmd_output",  args, kwargs
         result = util.exec_command(args, **kwargs)
         if result['returncode'] == 0:
             return result['out'].strip()
